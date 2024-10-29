@@ -5,7 +5,7 @@ package cmd.parser;
  * This is used to specify whether an option requires an argument, 
  * has an optional argument, or does not accept an argument.
  */
-public enum OptionArgumentType {
+public enum OptionType {
     /**
      * Indicates that the option does not accept any arguments.
      */
@@ -14,10 +14,20 @@ public enum OptionArgumentType {
     /**
      * Indicates that the option requires an argument.
      */
-    REQUIRED_ARGUMENT, 
+    REQUIRES_ONE_ARGUMENT, 
+
+    /**
+     * Indicates that the option requires one or more arguments.
+     */
+    REQUIRES_ONE_OR_MORE_ARGUMENTS,
 
     /**
      * Indicates that the option accepts an optional argument.
      */
-    OPTIONAL_ARGUMENT
+    OPTIONAL_ONE_ARGUMENT,
+
+    /**
+     * Indicates that the option accepts no argument or multiple arguments.
+     */
+    OPTIONAL_ONE_OR_MORE_ARGUMENTS
 }
