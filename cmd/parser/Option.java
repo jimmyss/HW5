@@ -1,19 +1,15 @@
 package cmd.parser;
 
-import java.util.Optional;
-
-/*
- * CmdOption class
- */
 /**
  * The {@code Option} class represents a command-line option with both long and short argument names.
  * It also specifies the type of argument the option expects and can store an optional value.
- * This class is used for parsing and handling command-line arguments.
+ * This class is used for parsing and handling command-line arguments. To obtain an instance of this class, use the {@code OptionBuilder} class.
  * 
  * <p>Example usage:</p>
  * <pre>
  * {@code
- * Option option = new Option("verbose", 'v', OptionArgumentType.BOOLEAN);
+ * OptionBuilder helpBuilder = new OptionBuilder(OptionType.FLAG, "h");
+ * Option helpOption = helpBuilder.build();
  * }
  * </pre>
  * 
@@ -28,28 +24,9 @@ import java.util.Optional;
  * @see OptionArgumentType
  */
 public class Option {
-
-    /**
-     * Constructs an {@code Option} with the specified long argument name, short argument name,
-     * and argument type.
-     *
-     * @param longArgumentName the long name of the argument (e.g., "--help")
-     * @param shortArgumentName the short name of the argument (e.g., '-h')
-     * @param argumentType the type of the argument (e.g., required, optional, no argument)
-     */
-    public Option(String longArgumentName, String shortArgumentName, OptionArgumentType argumentType) {
+    private Option(OptionType optionTypeString, String optionDescription, String shortArgumentName, String longArgumentName, String[] possibleValues) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
-
-    /**
-     * Constructs an {@code Option} with the specified short argument name and argument type. The long argument name is set to the same value as the short name.
-     *
-     * @param shortArgumentName the short name of the argument (e.g., '-h')
-     * @param argumentType the type of the argument (e.g., required, optional, no argument)
-     */
-    public Option(char shortArgumentName, OptionArgumentType argumentType) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    } 
 
     /**
      * Returns the long argument name of this option. If the long argument name is not set, the short argument name is returned.
@@ -61,7 +38,7 @@ public class Option {
     }
 
     /**
-     * Returns the short argument name of this option. If the short argument name is not set, the long argument name is returned.
+     * Returns the short argument name of this option.
      *
      * @return the short argument name
      */
@@ -74,46 +51,20 @@ public class Option {
      *
      * @return the argument type
      */
-    public OptionArgumentType getArgumentType() {
+    public OptionType getOptionType() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     /**
-     * Returns the value of this option as an {@code Optional<String>}.
-     *
-     * If the argument type is of type no argument or optional and there is no argument, the value is empty.
+     * Returns the values set to this option. If the option type is {@code OptionType.NO_ARGUMENT}, the returned array will be empty.
+     * If the option type is {@code OptionType.REQUIRES_ONE_ARGUMENT} or {@code OptionType.REQUIRES_ONE_OR_MORE_ARGUMENTS}, the returned array will contain at least one element.
+     * If the option type is {@code OptionType.OPTIONAL_ONE_ARGUMENT} or {@code OptionType.OPTIONAL_ONE_OR_MORE_ARGUMENTS}, the returned array will be empty or have one or more elements.
      * 
-     * @return the value of this option
+     * <p>If the option type is {@code OptionType.NO_ARGUMENT}, the returned array will be empty.</p>
+     * 
+     * @return the values set for this option or an empty array if no values are set
      */
-    public Optional<String> getValue() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    /**
-     * Returns whether the option is present in the command line arguments.
-     *
-     * @return {@code true} if the option is present, {@code false} otherwise
-     */
-    public boolean isPresent() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    /**
-     * Sets whether the option is present in the command line arguments.
-     *
-     * @param present {@code true} if the option is present, {@code false} otherwise
-     */
-    public void setPresent(boolean present) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    /**
-     * Sets the command line argument for this option.
-     *
-     * @param value the value to set
-     * @throws UnsupportedOperationException if the option does not accept an argument
-     */
-    public void setValue(String value) {
+    public String[] getValues() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 }
