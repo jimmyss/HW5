@@ -3,11 +3,17 @@ package rational.rational;
 public final class RationalNumber implements Comparable<RationalNumber> {
     public final static RationalNumber ZERO = new RationalNumber(0);
     public final static RationalNumber ONE = new RationalNumber(1);
+    public final static RationalNumber MAX_VALUE = new RationalNumber(Integer.MAX_VALUE);
     
     public RationalNumber(int numerator) {
         throw new UnsupportedOperationException();
     }
     public RationalNumber(int numerator, int denominator) throws IllegalArgumentException {
+        throw new UnsupportedOperationException();
+    }
+
+    // Maybe
+    public RationalNumber(double value) {
         throw new UnsupportedOperationException();
     }
 
@@ -31,10 +37,23 @@ public final class RationalNumber implements Comparable<RationalNumber> {
         throw new UnsupportedOperationException();
     }
 
+    // Should these be static?
+    public static RationalNumber max(RationalNumber number1, RationalNumber number2, RationalNumber... numbers) {
+        throw new UnsupportedOperationException();
+    }
+    public static RationalNumber min(RationalNumber number1, RationalNumber number2, RationalNumber... numbers) {
+        throw new UnsupportedOperationException();
+    }
+
     public RationalNumber negate() {
         throw new UnsupportedOperationException();
     }
     public RationalNumber reciprocate() {
+        throw new UnsupportedOperationException();
+    }
+
+    // Gets as close as possible to the true value
+    public double doubleValue() {
         throw new UnsupportedOperationException();
     }
 
