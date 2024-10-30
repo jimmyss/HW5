@@ -33,7 +33,7 @@ public class Collation {
      *         zero if {@code str1} and {@code str2} are the same.
      * @throws NullPointerException if either {@code str1} or {@code str2} is {@code null}
      */
-    public static int compareWithLocale(String str1, String str2){
+    public static int compareWithDefaultLocale(String str1, String str2) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -55,15 +55,14 @@ public class Collation {
      * @throws NullPointerException if either {@code str1} or {@code str2} is {@code null}.
      * @throws IllegalArgumentException if {@code locale} is {@code null}.
      */
-    public static int compareWithLocale(String str1, String str2, Locale locale){
+    public static int compareWithLocale(String str1, String str2, Locale locale) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     /**
-     * Transform string from {@code source} to a character array {@code destination}
-     * restricted by {@sizeLimit} under default locale.
+     * Transforms the {@code source} string to a character array {@code destination} under default locale.
      *
-     * This function perform explicit transformation from {@code source} to {@code destination},
+     * This function performs explicit transformation from {@code source} to {@code destination},
      * with return value representing the length of {@code destination}. This return value has
      * no relationship with {@code sizeLimit}, meaning that return value should be greater than
      * {@code sizeLimit} if it doesn't fit the limitation. The length of {@code destination}
@@ -74,13 +73,12 @@ public class Collation {
      * {@code
      * }
      * @param source Immutable source string to be transformed.
-     * @param destination The destination where transformed string will be stored.
      * @param sizeLimit Limiting the upper bound of transformed string's length.
-     * @return The number of characters needed for full transformation.
+     * @return The transformed string, using the default locale.
      * @throws NullPointerException if either {@code source} or {@code destination} is {@code null}.
      * @throws IllegalArgumentException if {@code sizeLimit} is less than zero.
      */
-    public static int transformWithLocale(String source, char[] destination, int sizeLimit){
+    public static String transformIntoDefaultLocale(String source) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -109,9 +107,7 @@ public class Collation {
      * @throws IllegalArgumentException if {@code sizeLimit} is less than zero.
      * @throws IllegalArgumentException if {@code locale} is {@code null}.
      */
-    public static int transformWithLocale(String source, char[] destination, int sizeLimit, Locale locale){
+    public static String transformIntoLocale(String source, Locale locale) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
-
-
 }

@@ -4,6 +4,7 @@ public final class RationalNumber implements Comparable<RationalNumber> {
     public final static RationalNumber ZERO = new RationalNumber(0);
     public final static RationalNumber ONE = new RationalNumber(1);
     public final static RationalNumber MAX_VALUE = new RationalNumber(Integer.MAX_VALUE);
+    public final static RationalNumber MIN_VALUE = new RationalNumber(Integer.MIN_VALUE);
     
     public RationalNumber(int numerator) {
         throw new UnsupportedOperationException();
