@@ -1,5 +1,7 @@
 package cmd.parser;
 
+// TODO: DELETE
+
 /**
  * The {@code OptionBuilder} class provides a builder for constructing
  * {@code Option} objects. It allows setting various properties of an {@code Option}
@@ -46,17 +48,6 @@ public class OptionBuilder {
      * @return The current instance of OptionBuilder.
      */
     public OptionBuilder setLongArgumentName(String longArgumentName) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    /**
-     * Sets the possible values for the option.
-     *
-     * @param possibleValues An array of possible values for the option.
-     * @return The current instance of OptionBuilder.
-     * @throws IllegalArgumentException if the option type is of @{code OptionType.NO_ARGUMENT}
-     */
-    public OptionBuilder setPossibleValues(String[] possibleValues) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

@@ -14,20 +14,10 @@ public enum OptionType {
     /**
      * Indicates that the option requires an argument.
      */
-    REQUIRES_ONE_ARGUMENT, 
-
-    /**
-     * Indicates that the option requires one or more arguments.
-     */
-    REQUIRES_ONE_OR_MORE_ARGUMENTS,
+    REQUIRES_ARGUMENT, 
 
     /**
      * Indicates that the option accepts an optional argument.
      */
-    OPTIONAL_ONE_ARGUMENT,
-
-    /**
-     * Indicates that the option accepts no argument or multiple arguments.
-     */
-    OPTIONAL_ONE_OR_MORE_ARGUMENTS
+    OPTIONAL_ARGUMENT,
 }

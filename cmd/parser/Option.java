@@ -1,5 +1,7 @@
 package cmd.parser;
 
+import java.util.Optional;
+
 /**
  * The {@code Option} class represents a command-line option with both long and short argument names.
  * It also specifies the type of argument the option expects and can store an optional value.
@@ -8,8 +10,7 @@ package cmd.parser;
  * <p>Example usage:</p>
  * <pre>
  * {@code
- * OptionBuilder helpBuilder = new OptionBuilder(OptionType.FLAG, "h");
- * Option helpOption = helpBuilder.build();
+ * Option helpOption = new Option(OptionType.NO_ARGUMENT, "h");
  * }
  * </pre>
  * 
@@ -17,14 +18,14 @@ package cmd.parser;
  * <ul>
  *   <li>A long argument name (e.g., "verbose")</li>
  *   <li>A short argument name (e.g., 'v')</li>
- *   <li>An argument type (e.g., {@code OptionArgumentType.BOOLEAN})</li>
  *   <li>An optional value (e.g., "true" for a boolean option)</li>
  * </ul>
  * 
  * @see OptionArgumentType
  */
 public class Option {
-    private Option(OptionType optionTypeString, String optionDescription, String shortArgumentName, String longArgumentName, String[] possibleValues) {
+    // TODO
+    public Option(OptionType optionTypeString, String shortArgumentName, String longArgumentName) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -56,15 +57,15 @@ public class Option {
     }
 
     /**
-     * Returns the values set to this option. If the option type is {@code OptionType.NO_ARGUMENT}, the returned array will be empty.
-     * If the option type is {@code OptionType.REQUIRES_ONE_ARGUMENT} or {@code OptionType.REQUIRES_ONE_OR_MORE_ARGUMENTS}, the returned array will contain at least one element.
-     * If the option type is {@code OptionType.OPTIONAL_ONE_ARGUMENT} or {@code OptionType.OPTIONAL_ONE_OR_MORE_ARGUMENTS}, the returned array will be empty or have one or more elements.
+     * Returns the value set to this option. If the option type is {@code OptionType.NO_ARGUMENT}, the returned array will be empty.
+     * If the option type is {@code OptionType.REQUIRES_ARGUMENT}, the returned array will contain at least one element.
+     * If the option type is {@code OptionType.OPTIONAL_ARGUMENT}, the returned array will be empty or have one or more elements.
      * 
      * <p>If the option type is {@code OptionType.NO_ARGUMENT}, the returned array will be empty.</p>
      * 
      * @return the values set for this option or an empty array if no values are set
      */
-    public String[] getValues() {
+    public Optional<String> getValue() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 }

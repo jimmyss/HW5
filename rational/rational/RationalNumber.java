@@ -1,27 +1,31 @@
 package rational.rational;
 
+import java.math.BigInteger;
+
 public final class RationalNumber implements Comparable<RationalNumber> {
-    public final static RationalNumber ZERO = new RationalNumber(0);
-    public final static RationalNumber ONE = new RationalNumber(1);
-    public final static RationalNumber MAX_VALUE = new RationalNumber(Integer.MAX_VALUE);
-    public final static RationalNumber MIN_VALUE = new RationalNumber(Integer.MIN_VALUE);
+    public static final RationalNumber ZERO = new RationalNumber(0);
+    public static final RationalNumber ONE = new RationalNumber(1);
+    public static final RationalNumber MAX_VALUE = new RationalNumber(Integer.MAX_VALUE);
+    public static final RationalNumber MIN_VALUE = new RationalNumber(Integer.MIN_VALUE);
+    // TODO: Add smallest possible rationals
     
-    public RationalNumber(int numerator) {
+    public RationalNumber(long numerator) {
         throw new UnsupportedOperationException();
     }
-    public RationalNumber(int numerator, int denominator) throws IllegalArgumentException {
+    public RationalNumber(long numerator, long denominator) throws IllegalArgumentException {
+        throw new UnsupportedOperationException();
+    }
+    public RationalNumber(BigInteger numerator) {
+        throw new UnsupportedOperationException();
+    }
+    public RationalNumber(BigInteger numerator, BigInteger denominator) throws IllegalArgumentException {
         throw new UnsupportedOperationException();
     }
 
-    // Maybe
-    public RationalNumber(double value) {
+    public BigInteger getNumerator() {
         throw new UnsupportedOperationException();
     }
-
-    public int getNumerator() {
-        throw new UnsupportedOperationException();
-    }
-    public int getDenominator() {
+    public BigInteger getDenominator() {
         throw new UnsupportedOperationException();
     }
 
@@ -34,7 +38,7 @@ public final class RationalNumber implements Comparable<RationalNumber> {
     public RationalNumber times(RationalNumber other) throws IllegalArgumentException {
         throw new UnsupportedOperationException();
     }
-    public RationalNumber divides(RationalNumber other) throws IllegalArgumentException {
+    public RationalNumber divides(RationalNumber other) throws IllegalArgumentException, ArithmeticException {
         throw new UnsupportedOperationException();
     }
 
@@ -47,9 +51,6 @@ public final class RationalNumber implements Comparable<RationalNumber> {
     }
 
     public RationalNumber negate() {
-        throw new UnsupportedOperationException();
-    }
-    public RationalNumber reciprocate() {
         throw new UnsupportedOperationException();
     }
 

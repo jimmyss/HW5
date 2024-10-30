@@ -3,7 +3,7 @@ import cmd.parser.Option;
 import cmd.parser.OptionBuilder;
 import cmd.parser.OptionType;
 
-import java.util.HashMap;
+import java.util.Map;
 
 public class ClientApplication {
 
@@ -19,28 +19,22 @@ public class ClientApplication {
                 .setLongArgumentName("verbose")
                 .build();
 
-        Option outputOption = new OptionBuilder(OptionType.REQUIRES_ONE_ARGUMENT, "o")
+        Option outputOption = new OptionBuilder(OptionType.REQUIRES_ARGUMENT, "o")
                 .setOptionDescription("Specifies the output file")
                 .setLongArgumentName("output")
                 .build();
 
-        Option filesOption = new OptionBuilder(OptionType.REQUIRES_ONE_OR_MORE_ARGUMENTS, "f")
-                .setOptionDescription("Specifies multiple files")
-                .setLongArgumentName("files")
-                .build();
-
-        Option modeOption = new OptionBuilder(OptionType.REQUIRES_ONE_ARGUMENT, "m")
+        Option modeOption = new OptionBuilder(OptionType.REQUIRES_ARGUMENT, "m")
                 .setOptionDescription("Specifies the mode")
                 .setLongArgumentName("mode")
-                .setPossibleValues(new String[]{"auto", "manual"})
                 .build();
 
         // Step 2: Create an array of all options
-        Option[] options = {helpOption, verboseOption, outputOption, filesOption, modeOption};
+        Option[] options = {helpOption, verboseOption, outputOption, modeOption};
 
         try {
             // Step 3: Parse command-line arguments
-            HashMap<String, Option> parsedOptions = CommandLineParser.parse(args, options);
+            Map<String, Option> parsedOptions = CommandLineParser.parse(args, options);
 
             // Step 4: Handle the help option first, if present
             if (parsedOptions.containsKey("help")) {
@@ -56,17 +50,12 @@ public class ClientApplication {
 
             if (parsedOptions.containsKey("output")) {
                 Option outputOpt = parsedOptions.get("output");
-                System.out.println("Output file specified: " + outputOpt.getValues()[0]);
-            }
-
-            if (parsedOptions.containsKey("files")) {
-                Option filesOpt = parsedOptions.get("files");
-                System.out.println("Files specified: " + String.join(", ", filesOpt.getValues()));
+                System.out.println("Output file specified: " + outputOpt.getValue());
             }
 
             if (parsedOptions.containsKey("mode")) {
                 Option modeOpt = parsedOptions.get("mode");
-                System.out.println("Mode specified: " + modeOpt.getValues()[0]);
+                System.out.println("Mode specified: " + modeOpt.getValue());
             }
 
         } catch (IllegalArgumentException e) {

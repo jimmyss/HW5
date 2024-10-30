@@ -1,6 +1,6 @@
 package cmd.parser;
 
-import java.util.HashMap;
+import java.util.Map;
 
 /**
  * The CommandLineParser class provides methods to parse command-line arguments
@@ -63,10 +63,9 @@ public class CommandLineParser {
      * @throws IllegalArgumentException if one of the options with a required argument does not have an argument
      * @throws IllegalArgumentException if one of the options with no argument receives an argument
      * @throws IllegalArgumentException if an option appears more than once
-     * @throws IllegalArgumentException if an option's argument is not in the valid value list
      * @throws IllegalArgumentException if an option is not recognized
      */
-    public static HashMap<String, Option> parse(String[] args, Option[] options) {
+    public static Map<String, Option> parse(String[] args, Option[] options) throws IllegalArgumentException {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

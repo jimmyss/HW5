@@ -9,7 +9,7 @@ public class Client {
 
         // Test case 1: Default locale comparison
         try{
-            int result = Collation.compareWithLocale(str1, str2);
+            int result = Collation.compareWithDefaultLocale(str1, str2);
             if (result < 0) {
                 System.out.println("\"" + str1 + "\" is less than \"" + str2 + "\"");
             } else if (result > 0) {
@@ -39,14 +39,11 @@ public class Client {
 
         // Test cases for Collation.transformWithLocale()
         String source = "café";
-        char[] destination = new char[10];
-        int sizeLimit = 10;
-
         // Test case 3: Transform with default locale
         try {
-            int length = Collation.transformWithLocale(source, destination, sizeLimit);
-            System.out.println("Transformation length (default locale): " + length);
-            System.out.println("Transformed string (default locale): " + new String(destination, 0, length));
+            String destination = Collation.transformIntoDefaultLocale(source);
+            System.out.println("Transformation length (default locale): " + destination.length());
+            System.out.println("Transformed string (default locale): " + destination);
         } catch (Exception e) {
             System.out.println("Exception in testing case 5 of transformWithLocale");
             System.out.println(e.getMessage());
@@ -54,9 +51,9 @@ public class Client {
 
         // Test case 4: Transform with specific locale (Spanish)
         try {
-            int length = Collation.transformWithLocale(source, destination, sizeLimit, Locale.getDefault());
-            System.out.println("Transformation length (Spanish locale): " + length);
-            System.out.println("Transformed string (Spanish locale): " + new String(destination, 0, length));
+            String destination = Collation.transformIntoLocale(source, Locale.getDefault());
+            System.out.println("Transformation length (Spanish locale): " + destination.length());
+            System.out.println("Transformed string (Spanish locale): " + destination);
         } catch (Exception e) {
             System.out.println("Exception in testing case 6 of transformWithLocale");
             System.out.println(e.getMessage());
