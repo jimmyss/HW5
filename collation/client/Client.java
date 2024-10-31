@@ -45,7 +45,7 @@ public class Client {
             System.out.println("Transformation length (default locale): " + destination.length());
             System.out.println("Transformed string (default locale): " + destination);
         } catch (Exception e) {
-            System.out.println("Exception in testing case 5 of transformWithLocale");
+            System.out.println("Exception in testing case 3 of transformWithLocale");
             System.out.println(e.getMessage());
         }
 
@@ -55,7 +55,7 @@ public class Client {
             System.out.println("Transformation length (Spanish locale): " + destination.length());
             System.out.println("Transformed string (Spanish locale): " + destination);
         } catch (Exception e) {
-            System.out.println("Exception in testing case 6 of transformWithLocale");
+            System.out.println("Exception in testing case 4 of transformWithLocale");
             System.out.println(e.getMessage());
         }
 

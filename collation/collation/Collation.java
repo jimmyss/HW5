@@ -14,17 +14,21 @@ public class Collation {
     /**
      * Compares two strings for collation order using the system's default locale.
      *
+     * This function will perform implicit transformation of two strings {@code str1}
+     * and {@code str2} to current locale, and conduct comparison. Finally this function
+     * will return an integer.
+     *
      * Usage Example:
-     * @example
-     * {@code
-     * int result = Collation.compareWithLocale("foo", "bar");
+     * <pre><code>
+     * int result = Collation.compareWithDefaultLocale("foo", "bar");
      * if (result < 0) {
      *      System.out.println("\"foo\" comes before \"bar\"");
      * } else if (result > 0) {
      *     System.out.println("\"foo\" comes after \"bar\"");
      * } else {
      *     System.out.println("\"foo\" is equal to \"bar\"");
-     * }}
+     * }
+     * </code></pre
      *
      * @param str1 This is the first String to be compared.
      * @param str2 This is the second String to be compared.
@@ -40,11 +44,21 @@ public class Collation {
     /**
      * Compares two strings for collation order based on specific locale.
      *
-     * Usage Example:
-     * @example
-     * {@code
+     * This function will perform implicit transformation of two strings {@code str1}
+     * and {@code str2} to specified locale, and compare under this locale. An integer
+     * will be returned after the comparison.
      *
+     * Usage Example:
+     * <pre><code>
+     * int result = Collation.compareWithLocale("café", "cafe", Locale.FRENCH);
+     * if (result < 0) {
+     *     System.out.println("\"café\" comes before \"cafe\" in French collation.");
+     * } else if (result > 0) {
+     *     System.out.println("\"café\" comes after \"cafe\" in French collation.");
+     * } else {
+     *     System.out.println("\"café\" is equal to \"cafe\" in French collation.");
      * }
+     * </code></pre>
      *
      * @param str1 This is the first String to be compared.
      * @param str2 This is the second String to be compared.
@@ -60,55 +74,48 @@ public class Collation {
     }
 
     /**
-     * Transforms the {@code source} string to a character array {@code destination} under default locale.
+     * Transforms the {@code source} string into a collation key string under the default locale.
+     * The transformed string can be used for locale-sensitive comparisons.
      *
-     * This function performs explicit transformation from {@code source} to {@code destination},
-     * with return value representing the length of {@code destination}. This return value has
-     * no relationship with {@code sizeLimit}, meaning that return value should be greater than
-     * {@code sizeLimit} if it doesn't fit the limitation. The length of {@code destination}
-     * should be no greater than {@code sizeLimit}. To get the whole transformed string, apply
-     * larger {@code sizeLimit}.
+     * This function performs explicit transformation of {@code source}, with return value representing
+     * the transformed String. This method is more simple and intuitive compared with the original one
+     * on GNU platform.
      *
      * Usage Example:
-     * {@code
-     * }
+     * <pre><code>
+     * char[] destination = new char[100];
+     * int transformedLength = Collation.transformWithLocale("example");
+     * </code></pre>
+     *
      * @param source Immutable source string to be transformed.
-     * @param sizeLimit Limiting the upper bound of transformed string's length.
      * @return The transformed string, using the default locale.
      * @throws NullPointerException if either {@code source} or {@code destination} is {@code null}.
-     * @throws IllegalArgumentException if {@code sizeLimit} is less than zero.
      */
     public static String transformIntoDefaultLocale(String source) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     /**
-     * Transform string from {@code source} to a character sequence {@code destination}
-     * restricted by {@sizeLimit} under specific locale.
+     * Transforms the {@code source} string into a collation key string under specified locale.
+     * The transformed string can be used for locale-sensitive comparisons.
      *
-     * This function perform explicit transformation from {@code source} to {@code destination},
-     * with return value representing the length of {@code destination}. This return value has
-     * no relationship with {@code sizeLimit}, meaning that return value should be greater than
-     * {@code sizeLimit} if it doesn't fit the limitation. The length of {@code destination}
-     * should be no greater than {@code sizeLimit}. To get the whole transformed string, apply
-     * larger {@code sizeLimit}.
+     * This function performs explicit transformation of {@code source} according to specified {@code locale},
+     * with return value representing the transformed String. This method is more simple and intuitive compared
+     * with the original one on GNU platform.
      *
      * Usage Example:
-     * {@code
+     * <pre><code>
      * char[] destination = new char[100];
-     * int transformedLength = Collation.transformWithLocale("foo", destination, 50, Locale.US)
-     * }
+     * int transformedLength = Collation.transformWithLocale("foo", Locale.US)
+     * </code></pre>
+     *
      * @param source Immutable source string to be transformed.
-     * @param destination The destination where transformed string will be stored.
-     * @param sizeLimit Limiting the upper bound of transformed string's length.
      * @param locale Specific locale where string comparison is performed.
      * @return The number of characters needed for full transformation.
      * @throws NullPointerException if either {@code source} or {@code destination} is {@code null}.
-     * @throws IllegalArgumentException if {@code sizeLimit} is less than zero.
      * @throws IllegalArgumentException if {@code locale} is {@code null}.
      */
     public static String transformIntoLocale(String source, Locale locale) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
-
 }
