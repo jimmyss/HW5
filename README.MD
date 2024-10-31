@@ -37,8 +37,4 @@ All the functions from GNU C library are:
     length of the entire transformed string.
 -   `wcsxfrm`: Perform very similar to strxfrm, but operate on wide character.
 
-All functions translated to Java platform:
-
--   `strcoll`:
-
 # fractions
