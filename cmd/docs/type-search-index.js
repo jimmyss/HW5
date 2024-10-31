@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"cmd.parser","l":"CommandLineParser"},{"p":"cmd.parser","l":"Option"},{"p":"cmd.parser","l":"OptionBuilder"},{"p":"cmd.parser","l":"OptionType"}];updateSearchResults();
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"cmd.parser","l":"CommandLineParser"},{"p":"cmd.parser","l":"Option"},{"p":"cmd.parser","l":"OptionBuilder"},{"p":"cmd.parser","l":"OptionType"},{"p":"cmd.parser","l":"CommandLineParser.ParsingOrder"}];updateSearchResults();
