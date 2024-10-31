@@ -5,7 +5,6 @@ import java.util.Optional;
 /**
  * The {@code Option} class represents a command-line option with both long and short argument names.
  * It also specifies the type of argument the option expects and can store an optional value.
- * This class is used for parsing and handling command-line arguments. To obtain an instance of this class, use the {@code OptionBuilder} class.
  * 
  * <p>Example usage:</p>
  * <pre>
@@ -16,16 +15,32 @@ import java.util.Optional;
  * 
  * <p>Each option has:</p>
  * <ul>
- *   <li>A long argument name (e.g., "verbose")</li>
- *   <li>A short argument name (e.g., 'v')</li>
+ *   <li>A long argument name (e.g., "--verbose")</li>
+ *   <li>A short argument name (e.g., '-v')</li>
  *   <li>An optional value (e.g., "true" for a boolean option)</li>
  * </ul>
  * 
  * @see OptionArgumentType
  */
 public class Option {
-    // TODO
-    public Option(OptionType optionTypeString, String shortArgumentName, String longArgumentName) {
+    /**
+     * Constructs an Option with the specified option type and short argument name. The long argument name is set to the short argument name by default.
+     * 
+     * @param optionTypeString The type of the option.
+     * @param shortArgumentName The short argument name for the option.
+     */
+    public Option(OptionType optionTypeString, char shortArgumentName) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    /**
+     * Constructs an Option with the specified option type, short argument name, and long argument name.
+     * 
+     * @param optionTypeString The type of the option.
+     * @param shortArgumentName The short argument name for the option.
+     * @param longArgumentName The long argument name for the option.
+     */
+    public Option(OptionType optionTypeString, char shortArgumentName, String longArgumentName) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -57,13 +72,10 @@ public class Option {
     }
 
     /**
-     * Returns the value set to this option. If the option type is {@code OptionType.NO_ARGUMENT}, the returned array will be empty.
-     * If the option type is {@code OptionType.REQUIRES_ARGUMENT}, the returned array will contain at least one element.
-     * If the option type is {@code OptionType.OPTIONAL_ARGUMENT}, the returned array will be empty or have one or more elements.
+     * Returns the value set to this option. If the option type is {@code OptionType.NO_ARGUMENT}, the returned option will be empty.
+     * If the option type is {@code OptionType.OPTIONAL_ARGUMENT}, the returned option could be empty.
      * 
-     * <p>If the option type is {@code OptionType.NO_ARGUMENT}, the returned array will be empty.</p>
-     * 
-     * @return the values set for this option or an empty array if no values are set
+     * @return the value set for this option or an empty array if no values are set
      */
     public Optional<String> getValue() {
         throw new UnsupportedOperationException("Not supported yet.");
