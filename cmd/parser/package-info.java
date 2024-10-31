@@ -1,78 +1,62 @@
 /**
- * The {@code cmd.parser} package provides classes and utilities for parsing command-line arguments
- * and generating help messages for specified options. This package offers a flexible and extensible
- * way to define and manage command-line options, allowing for single or multiple arguments, and validating
- * argument values against a predefined set of possible values.
+ * The {@code cmd.parser} package provides utility classes for parsing command-line arguments 
+ * and generating structured information from command-line options. This package is designed to
+ * facilitate the implementation of customizable and flexible command-line interfaces for Java applications.
  * 
- * <h2>Overview</h2>
- * <p>
- * The {@code cmd.parser} package includes the following key classes:
- * </p>
+ * <h2>Main Classes:</h2>
  * <ul>
- *   <li>{@link cmd.parser.CommandLineParser} - The main class responsible for parsing command-line arguments
- *       and generating help messages.</li>
- *   <li>{@link cmd.parser.Option} - Represents a command-line option with a short and long name, argument type,
- *       optional values, and a description.</li>
- *   <li>{@link cmd.parser.OptionBuilder} - A builder class to simplify the construction of {@link cmd.parser.Option}
- *       instances with optional values, descriptions, and other attributes.</li>
- *   <li>{@link cmd.parser.OptionType} - An enumeration that defines the type of argument an option requires,
- *       such as {@code FLAG}, {@code REQUIRES_ARGUMENT}, or {@code REQUIRES_MULTIPLE_ARGUMENTS}.</li>
+ *   <li>{@link cmd.parser.CommandLineParser} - The core class for parsing command-line arguments, providing flexible strategies
+ *       for handling options and non-option arguments, such as respecting the `--` end-of-options marker.</li>
+ *   <li>{@link cmd.parser.Option} - Represents a command-line option, including its long and short forms, argument types, 
+ *       and optional value storage.</li>
+ *   <li>{@link cmd.parser.ParsingOrder} - Enum defining different modes for handling the order of non-option arguments,
+ *       enabling parsing in a manner consistent with GNU, POSIX, or preserving the original order.</li>
  * </ul>
  * 
- * <h2>Usage Example</h2>
- * <p>
- * The package allows you to define command-line options using the {@link cmd.parser.OptionBuilder} class
- * and then parse command-line arguments using the {@link cmd.parser.CommandLineParser} class.
- * Here's an example of how to use the classes in this package:
- * </p>
+ * <h2>Features and Capabilities:</h2>
+ * - **Versatile Parsing Strategies**: Users can choose between multiple argument handling strategies with the {@link ParsingOrder} enum:
+ *   <ul>
+ *     <li><b>ORDER_OPTIONS_FIRST</b>: Orders options first, followed by non-options, similar to GNU tools.</li>
+ *     <li><b>STOP_PARSING_AT_NON_OPTION</b>: Stops parsing at the first non-option, treating subsequent arguments as non-options, consistent with POSIX.</li>
+ *     <li><b>KEEP_IN_PLACE</b>: Retains all options and non-options in their original order, ensuring no reordering occurs.</li>
+ *   </ul>
  * 
- * <pre>{@code
- * // Define options using OptionBuilder
- * OptionBuilder helpBuilder = new OptionBuilder(OptionType.FLAG, "h");
- * Option helpOption = helpBuilder
- *     .setOptionDescription("Displays help information")
- *     .setLongArgumentName("help")
- *     .build();
+ * - **Flexible Option Representation**: The {@link Option} class provides an abstraction for representing both short and long 
+ *   command-line options. Options can include no arguments, optional arguments, or required arguments.
  * 
- * OptionBuilder verboseBuilder = new OptionBuilder(OptionType.FLAG, "v");
- * Option verboseOption = verboseBuilder
- *     .setOptionDescription("Enables verbose mode")
- *     .setLongArgumentName("verbose")
- *     .build();
+ * - **End-of-Options Handling**: The package respects the `--` marker, which signifies the end of options. Any arguments following 
+ *   `--` are treated strictly as non-option arguments, regardless of their appearance.
  * 
- * OptionBuilder outputBuilder = new OptionBuilder(OptionType.REQUIRES_ARGUMENT, "o");
- * Option outputOption = outputBuilder
- *     .setOptionDescription("Specifies the output file")
- *     .setLongArgumentName("output")
- *     .build();
+ * <h2>Example Usage:</h2>
+ * This package makes it simple to create command-line parsers that can be customized for different behaviors. Here's a sample usage scenario:
+ * <pre>
+ * import cmd.parser.CommandLineParser;
+ * import cmd.parser.Option;
+ * import cmd.parser.OptionType;
+ * import cmd.parser.ParsingOrder;
  * 
- * OptionBuilder filesBuilder = new OptionBuilder(OptionType.REQUIRES_MULTIPLE_ARGUMENTS, "f");
- * Option filesOption = filesBuilder
- *     .setOptionDescription("Specifies multiple files")
- *     .setLongArgumentName("files")
- *     .build();
- * 
- * OptionBuilder modeBuilder = new OptionBuilder(OptionType.REQUIRES_ARGUMENT, "m");
- * Option modeOption = modeBuilder
- *     .setOptionDescription("Specifies the mode")
- *     .setLongArgumentName("mode")
- *     .setPossibleValues(new String[]{"auto", "manual"})
- *     .build();
- * 
- * Option[] options = {helpOption, verboseOption, outputOption, filesOption, modeOption};
- * 
- * // Parse command-line arguments
- * String[] args = {"-h", "-o", "output.txt", "-m", "auto"};
- * HashMap<String, Option> parsedOptions = CommandLineParser.parse(args, options);
- * 
- * // Generate and display help message
- * String helpMessage = CommandLineParser.getHelp(options);
- * System.out.println(helpMessage);
- * }</pre>
- * 
- * @see cmd.parser.CommandLineParser
- * @see cmd.parser.Option
- * @see cmd.parser.OptionBuilder
- * @see cmd.parser.OptionType
+ * public class ExampleUsage {
+ *     public static void main(String[] args) {
+ *         // Define options
+ *         Option[] options = {
+ *             new Option(OptionType.NO_ARGUMENT, 'v', "verbose"),
+ *             new Option(OptionType.REQUIRED_ARGUMENT, 'o', "output"),
+ *             new Option(OptionType.NO_ARGUMENT, 'h', "help")
+ *         };
+ *         
+ *         // Sample command-line arguments
+ *         String[] commandArgs = {"-v", "--output", "file.txt", "-h", "file1.txt"};
+ *         
+ *         // Parse the arguments with different parsing modes
+ *         List<Option> parsedOptions = CommandLineParser.parseArguments(commandArgs, options, ParsingOrder.ORDER_OPTIONS_FIRST);
+ *         
+ *         // Display parsed options
+ *         parsedOptions.forEach(option -> {
+ *             System.out.println("Option: " + option.getLongArgumentName());
+ *             option.getValue().ifPresent(value -> System.out.println("  Argument: " + value));
+ *         });
+ *     }
+ * }
+ * </pre>
  */
 package cmd.parser;

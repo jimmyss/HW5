@@ -3,13 +3,54 @@ package cmd.parser;
 import java.util.List;
 
 /**
- * The CommandLineParser class provides methods to parse command-line arguments
- * and generate help messages for specified options.
- * 
- * Usage example:
+ * The {@code CommandLineParser} class provides utility methods for parsing command-line arguments
+ * and generating help messages for specified options. This class supports flexible parsing strategies,
+ * enabling users to handle command-line arguments in a variety of ways, including GNU-like parsing,
+ * POSIX-like parsing, and preserving the original order of arguments.
+ *
+ * <h2>Usage Example:</h2>
  * <pre>
- 
+ * // Define command-line options
+ * Option[] options = {
+ *     new Option(OptionType.NO_ARGUMENT, 'v', "verbose"),
+ *     new Option(OptionType.REQUIRED_ARGUMENT, 'o', "output"),
+ *     new Option(OptionType.NO_ARGUMENT, 'h', "help")
+ * };
+ *
+ * // Command-line arguments to parse
+ * String[] args = {"-v", "--output", "file.txt", "-h"};
+ *
+ * // Parse the arguments using GNU-like ordering (ORDER_OPTIONS_FIRST)
+ * List<Option> result = CommandLineParser.parseArguments(args, options, ParsingOrder.ORDER_OPTIONS_FIRST);
+ * 
+ * // Resulting list of options (in order):
+ * // - verbose
+ * // - output (argument: "file.txt")
+ * // - help
  * </pre>
+ * 
+ * <h3>Available Methods:</h3>
+ * <ul>
+ *   <li>{@link #parseArguments(String[], Option[])} - Parses command-line arguments with default GNU-like parsing.</li>
+ *   <li>{@link #parseArgumentsLooseDash(String[], Option[])} - Parses arguments with flexible dash usage for long options.</li>
+ *   <li>{@link #parseArguments(String[], Option[], ParsingOrder)} - Parses arguments using the specified {@link ParsingOrder}, allowing finer control over the ordering of non-option arguments.</li>
+ *   <li>{@link #parseArgumentsLooseDash(String[], Option[], ParsingOrder)} - Similar to {@code parseArguments} but supports both single and double dash for long options.</li>
+ * </ul>
+ * 
+ * <h3>Parsing Modes:</h3>
+ * The methods in this class allow different strategies for handling non-option arguments. The strategies are defined by
+ * the {@link ParsingOrder} enum:
+ * <ul>
+ *   <li>{@link ParsingOrder#ORDER_OPTIONS_FIRST} - Orders recognized options first, similar to GNU tools, with non-option arguments moved to the end.</li>
+ *   <li>{@link ParsingOrder#STOP_PARSING_AT_NON_OPTION} - Stops parsing at the first non-option argument, treating all subsequent arguments as non-options. This behavior is consistent with POSIX conventions.</li>
+ *   <li>{@link ParsingOrder#KEEP_IN_PLACE} - Keeps options and non-option arguments in their original order, without reordering.</li>
+ * </ul>
+ * 
+ * <h3>Handling Non-Option Arguments:</h3>
+ * - The methods respect the `--` marker to signify the end of option parsing.
+ * - After encountering `--`, all subsequent arguments are treated as non-options, regardless of their appearance.
+ * - Non-option arguments are listed as options with a shortname of `'\0'` and a longname of `"non-option"`.
+ * 
  */
 public class CommandLineParser {
 
@@ -154,7 +195,7 @@ public class CommandLineParser {
      * dash or double dash. The options are returned according to the specified {@link ParsingOrder}.
      * 
      * This method allows long options to be specified with either a single '-' or '--'.
-     * For example, both `-help` and `--help` are treated as the long option "help".
+     * For example, both `-help` and `--help` are treated as the long option "help" instead of tracking -help as -h -e -l -p.
      * 
      * This method respects the `--` end-of-options marker. When `--` is encountered, all subsequent arguments
      * are treated as non-option arguments, regardless of whether they start with a dash.
