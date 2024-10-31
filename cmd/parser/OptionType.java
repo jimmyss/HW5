@@ -20,4 +20,9 @@ public enum OptionType {
      * Indicates that the option accepts an optional argument.
      */
     OPTIONAL_ARGUMENT,
+
+    /**
+     * Indicates that the option is a positional argument.
+     */
+    NON_OPTION_ARGUMENT
 }

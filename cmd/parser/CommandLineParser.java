@@ -15,11 +15,13 @@ public class CommandLineParser {
 
    /**
      * Parses the command-line arguments and returns a list of the present options in the args array.
-     * The options are returned in the same order of appearance, except that any unrecognized options 
+     * The options are returned in the same order of appearance, except that any unrecognized options and non options
      * are pushed to the end of the list, preserving their original order.
      * 
      * This method uses standard GNU-like parsing, where long options must be specified with '--' 
-     * (e.g., `--option`), and short options are specified with a single '-' (e.g., `-o`).
+     * (e.g., `--option`), and short options are specified with a single '-' (e.g., `-o`). 
+     * 
+     * All non-option arguments are listed as options with a shortname of '\0' and a longname of "non-option".
      * 
      * @param args the command-line arguments
      * @param options the options to parse, each specified as an {@link Option} object
@@ -53,7 +55,6 @@ public class CommandLineParser {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    
     /**
      * Parses the command-line arguments in a more flexible way, supporting both long options with a single 
      * dash or double dash. This method returns a list of the present options in the args array. 
@@ -62,6 +63,8 @@ public class CommandLineParser {
      * 
      * This method allows long options to be specified with either a single '-' or '--'.
      * For example, both `-help` and `--help` are treated as the long option "help".
+     * 
+     * All non-option arguments are listed as options with a shortname of '\0' and a longname of "non-option".
      * 
      * @param args the command-line arguments
      * @param options the options to parse, each specified as an {@link Option} object
@@ -94,5 +97,4 @@ public class CommandLineParser {
     public static Iterator<Option> parseArgumentsLooseDash(String[] args, Option[] options) throws IllegalArgumentException {
         throw new UnsupportedOperationException("Not supported yet.");
     }
-
 }

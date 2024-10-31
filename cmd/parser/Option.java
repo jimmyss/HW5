@@ -28,6 +28,7 @@ public class Option {
      * 
      * @param optionTypeString The type of the option.
      * @param shortArgumentName The short argument name for the option.
+     * @throws IllegalArgumentException if the option short argument name is set to '\1'
      */
     public Option(OptionType optionTypeString, char shortArgumentName) {
         throw new UnsupportedOperationException("Not supported yet.");
@@ -39,6 +40,7 @@ public class Option {
      * @param optionTypeString The type of the option.
      * @param shortArgumentName The short argument name for the option.
      * @param longArgumentName The long argument name for the option.
+     * @throws IllegalArgumentException if the option short argument name is set to '\1'
      */
     public Option(OptionType optionTypeString, char shortArgumentName, String longArgumentName) {
         throw new UnsupportedOperationException("Not supported yet.");
