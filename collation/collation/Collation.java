@@ -110,4 +110,5 @@ public class Collation {
     public static String transformIntoLocale(String source, Locale locale) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+
 }
