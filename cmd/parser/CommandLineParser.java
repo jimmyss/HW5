@@ -69,7 +69,7 @@ public class CommandLineParser {
      * 
      * @param args the command-line arguments
      * @param options the options to parse, each specified as an {@link Option} object
-     * @return an iterator over the {@link Option} objects present in the command-line arguments, 
+     * @return a List containing the {@link Option} objects present in the command-line arguments, 
      * mapped to their long argument version
      * @throws IllegalArgumentException if an option has duplicate short or long argument names in the options array
      * @throws IllegalArgumentException if one of the options with a required argument does not have an argument
@@ -85,7 +85,7 @@ public class CommandLineParser {
      * 
      * String[] args = {"-v", "--output", "file.txt", "-h"};
      * 
-     * Iterator<Option> result = parseArguments(args, options);
+     * List<Option> result = parseArguments(args, options);
      * // Resulting list of options (in order):
      * // - verbose
      * // - output (argument: "file.txt")
@@ -115,7 +115,7 @@ public class CommandLineParser {
      * 
      * @param args the command-line arguments
      * @param options the options to parse, each specified as an {@link Option} object
-     * @return an iterator over the {@link Option} objects present in the command-line arguments, 
+     * @return a list containing the {@link Option} objects present in the command-line arguments, 
      * mapped to their long argument version
      * @throws IllegalArgumentException if an option has duplicate short or long argument names in the options array
      * @throws IllegalArgumentException if one of the options with a required argument does not have an argument
@@ -131,7 +131,7 @@ public class CommandLineParser {
      * 
      * String[] args = {"-v", "-output", "file.txt", "-help"};
      * 
-     * Iterator<Option> result = parseArgumentsLooseDash(args, options);
+     * List<Option> result = parseArgumentsLooseDash(args, options);
      * // Resulting list of options (in order):
      * // - verbose
      * // - output (argument: "file.txt")
