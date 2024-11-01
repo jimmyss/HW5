@@ -102,7 +102,7 @@ public final class Collation {
      *
      * Usage Example:
      * <pre><code>
-     * String destination = Collation.transformWithLocale("foo", Locale.US)
+     * String destination = Collation.transformWithLocale("foo", Locale.US);
      * </code></pre>
      *
      * @param source Immutable source string to be transformed.
