@@ -20,14 +20,14 @@ public final class Collation {
      * Usage Example:
      * <pre><code>
      * int result = Collation.compareWithDefaultLocale("foo", "bar");
-     * if (result < 0) {
+     * if (result &lt; 0) {
      *      System.out.println("\"foo\" comes before \"bar\"");
-     * } else if (result > 0) {
+     * } else if (result &gt; 0) {
      *     System.out.println("\"foo\" comes after \"bar\"");
      * } else {
      *     System.out.println("\"foo\" is equal to \"bar\"");
      * }
-     * </code></pre
+     * </code></pre>
      *
      * @param str1 This is the first String to be compared.
      * @param str2 This is the second String to be compared.
@@ -50,9 +50,9 @@ public final class Collation {
      * Usage Example:
      * <pre><code>
      * int result = Collation.compareWithLocale("café", "cafe", Locale.FRENCH);
-     * if (result < 0) {
+     * if (result &lt; 0) {
      *     System.out.println("\"café\" comes before \"cafe\" in French collation.");
-     * } else if (result > 0) {
+     * } else if (result &gt; 0) {
      *     System.out.println("\"café\" comes after \"cafe\" in French collation.");
      * } else {
      *     System.out.println("\"café\" is equal to \"cafe\" in French collation.");
