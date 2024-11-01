@@ -52,7 +52,7 @@ import java.util.List;
  * - Non-option arguments are listed as options with a shortname of `'\0'` and a longname of `"non-option"`.
  * 
  */
-public class CommandLineParser {
+public final class CommandLineParser {
 
    /**
      * Parses the command-line arguments and returns a list of the present options in the args array.
@@ -287,5 +287,4 @@ public class CommandLineParser {
          */
         KEEP_IN_PLACE
     }
-
 }

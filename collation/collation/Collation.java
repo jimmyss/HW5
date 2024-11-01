@@ -1,4 +1,3 @@
-import java.text.Collator;
 import java.util.Locale;
 
 /**
@@ -9,7 +8,7 @@ import java.util.Locale;
  * locale-sensitive comparisons and transformations on strings, emulating functionalities
  * similar to {@code strcoll} and {@code strxfrm}.
  */
-public class Collation {
+public final class Collation {
 
     /**
      * Compares two strings for collation order using the system's default locale.
